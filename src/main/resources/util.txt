@@ -1,0 +1,116 @@
+完成java基础视频学习,和推荐书Effective java阅读!
+   完成demo
+要求:
+    开发一个jar包,提供一个工具类,里面有两个方法,
+ 1,java泛型对象转excel文件流.
+ 2,excel文件流转成java泛型对象.
+    3,需要做异常提示,如第几行第几列数据格式错误或者不能为空.
+    4,时间类型的可以指定转换格式.
+使用的技术点:
+    自定义注解,异常处理,java IO,泛型集合,反射
+    使用到Effective 中规范.
+ 工具类使用单例模式.
+
+提示:
+    在entity类上和属性中加上自定义注解,指定导出的head,每列的中文名,以及顺序,和数据格式规范!
+    导入指定从第几行开始,是否允许为空,支持其他正则的验证!
+
+    num isnull name
+
+
+    /**
+         * 创建工作簿对象
+         * 工作表名称，工作表标题，工作表数据最好能够对应起来</font><br>
+         * 比如三个不同或相同的工作表名称，三组不同或相同的工作表标题，三组不同或相同的工作表数据<br>
+         * 注意：
+         * 需要为每个工作表指定工作表名称，工作表标题，工作表数据
+         * 如果工作表的数目大于工作表数据的集合，那么首先会根据顺序一一创建对应的工作表名称和数据集合，然后创建的工作表里面是没有数据的
+         * 如果工作表的数目小于工作表数据的集合，那么多余的数据将不会写入工作表中
+         *
+         * @param sheetName 工作表名称的数组
+         * @param title     每个工作表名称的数组集合
+         * @param data      每个工作表数据的集合的集合
+         * @return Workbook工作簿
+         * @throws FileNotFoundException 文件不存在异常
+         * @throws IOException           IO异常
+         */
+       /* public static Workbook getWorkBook(String[] sheetName, List<? extends Object[]> title, List<? extends List<? extends Object[]>> data) throws FileNotFoundException, IOException {
+
+            // 创建工作簿
+            Workbook wb = new SXSSFWorkbook();
+            // 创建一个工作表sheet
+            Sheet sheet = null;
+            // 声明行
+            Row row = null;
+            // 声明单元格
+            Cell cell = null;
+            // 单元格样式
+            CellStyle titleStyle = wb.createCellStyle();
+            CellStyle cellStyle = wb.createCellStyle();
+            // 字体样式
+            Font font = wb.createFont();
+
+            font.setFontName("宋体");
+            // 字体加粗
+            font.setBold(true);
+            titleStyle.setFont(font);
+            // 水平居中
+            titleStyle.setAlignment(HorizontalAlignment.CENTER);
+
+            // 垂直居中
+            titleStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+
+            // 水平居中
+            cellStyle.setAlignment(HorizontalAlignment.CENTER);
+            // 垂直居中
+            cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+
+            cellStyle.setFillBackgroundColor(HSSFColor.BLUE.index);
+
+            // 标题数据
+            Object[] title_temp = null;
+
+            // 行数据
+            Object[] rowData = null;
+
+            // 工作表数据
+            List<? extends Object[]> sheetData = null;
+
+            // 遍历sheet
+            for (int sheetNumber = 0; sheetNumber < sheetName.length; sheetNumber++) {
+                // 创建工作表
+                sheet = wb.createSheet();
+                // 设置默认列宽
+                sheet.setDefaultColumnWidth(18);
+                // 设置工作表名称
+                wb.setSheetName(sheetNumber, sheetName[sheetNumber]);
+                // 设置标题
+                title_temp = title.get(sheetNumber);
+                row = sheet.createRow(0);
+
+                // 写入标题
+                for (int i = 0; i < title_temp.length; i++) {
+                    cell = row.createCell(i);
+                    cell.setCellStyle(titleStyle);
+                    cell.setCellValue(title_temp[i].toString());
+                }
+
+                try {
+                    sheetData = data.get(sheetNumber);
+                } catch (Exception e) {
+                    continue;
+                }
+                // 写入行数据
+                for (int rowNumber = 0; rowNumber < sheetData.size(); rowNumber++) {
+                    // 如果没有标题栏，起始行就是0，如果有标题栏，行号就应该为1
+                    row = sheet.createRow(title_temp == null ? rowNumber : (rowNumber + 1));
+                    rowData = sheetData.get(rowNumber);
+                    for (int columnNumber = 0; columnNumber < rowData.length; columnNumber++) {
+                        cell = row.createCell(columnNumber);
+                        cell.setCellStyle(cellStyle);
+                        cell.setCellValue(rowData[columnNumber] + "");
+                    }
+                }
+            }
+            return wb;
+        }*/
